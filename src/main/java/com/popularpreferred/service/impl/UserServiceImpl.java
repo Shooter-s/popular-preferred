@@ -84,6 +84,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         String keySuffix = now.format(DateTimeFormatter.ofPattern(":yyyyMM"));
         String key = "sign:" + userId + keySuffix;
         int dayOfMonth = now.getDayOfMonth();
+        // BITFIELD sign:id:202309 GET u14 0
         List<Long> list = stringRedisTemplate.opsForValue().bitField(key,
                 BitFieldSubCommands.create()
                         .get(BitFieldSubCommands
